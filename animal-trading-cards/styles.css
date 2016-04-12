@@ -1,0 +1,46 @@
+/* Generic */
+.italicize {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.padded-text {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Containers */
+.container{
+	border-style: solid;
+	border-color: #d3d3d3;
+	border-width: 1.5px;
+}
+
+.outer-container {
+	width: 330px;
+	box-shadow: 0 5px 5px gray;
+}
+
+.inner-container {
+	margin: 10px 15px 10px 15px;
+}
+
+/* Elements */
+.header {
+	padding: 15px 15px 0px 15px;
+	font-size: xx-large;
+	margin: 0px;
+}
+
+.animal-img {
+	padding: 10px 15px 0px 15px;
+	margin: 0px;
+}
+
+.no-bullets {
+	list-style-type: none;
+	margin: 0;
+}
