@@ -1,0 +1,59 @@
+/* Default fonts and style */
+body {
+	font-family: 'Lato', sans-serif;
+	color: #747707;
+	font-weight: 300;
+	padding: 5px;
+}
+
+/* Equal row heights */
+.row {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Text modifiers */
+.text-gray {
+	color: #BCBBBB;
+}
+
+.text-thin {
+	font-weight: 100;
+}
+
+.text-large {
+	font-size: 60px;
+}
+
+/* Scale images */
+img {
+	width: 100%;
+}
+
+/* Extra padding for logo */
+.logo img {
+	padding: 10px;
+	min-width: 125px;
+	max-width: 125px;
+}
+
+/* Less margins on header side */
+hr {
+	margin-top: 0;
+}
+
+@media screen and (max-width: 480px) {
+
+	.titles {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 441px) {
+	.logo img {
+		height: 180px;
+	}
+}
