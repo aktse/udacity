@@ -45,15 +45,13 @@ hr {
 }
 
 /* Media queries to smooth out header */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
+	.logo img {
+		display: block;
+		margin: 0 auto;
+	}
 
 	.titles {
 		text-align: center;
-	}
-}
-
-@media screen and (max-width: 441px) {
-	.logo img {
-		height: 180px;
 	}
 }
