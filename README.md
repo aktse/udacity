@@ -7,3 +7,6 @@ Udacity Front-End Nanodegree projects
   - CSS Practice
 3. Portfolio Site
   - Building responsive websites with bootstrap and CSS
+4. Online Resume
+  - Build online resume using JS and JSON
+  - Forked from https://github.com/udacity/frontend-nanodegree-resume
