@@ -74,19 +74,26 @@ var projects = {
 			"title": "Fbook",
 			"dates": "01/16 - 04/16",
 			"description": "Built a distributed social networking system as part of CMPUT 404 - Web Applications and Architecture. We utilized Flask, Postgresql, Jquery, Bootstrap and Heroku.",
-			"images": []
+			"images": [
+				"http://placekitten.com/200/200",
+				"http://placekitten.com/200/100"
+			]
 		},
 		{
 			"title": "Imaginary",
 			"dates": "01/16 - 04/16",
 			"description": "Built a 2d platforming game as part of INTD 450 - Computers and Games. We used Pygame.",
-			"images": []
+			"images": [
+				"http://placekitten.com/100/100"
+			]
 		},
 		{
 			"title": "Hanoi Robot",
 			"dates": "01/16 - 04/16",
 			"description": "Built a mobile robot that used visual servoing to solve the 'Tower of Hanoi' puzzle. Our robot used the Lego EV3 brick and was programmed in Java using the provided SDK.",
-			"images": []
+			"images": [
+				"http://placekitten.com/150/150"
+			]
 		},
 		{
 			"title": "RFIs for the Faculty of Medicine",
