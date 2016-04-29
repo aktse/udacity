@@ -1,10 +1,10 @@
 function format(element, replacement) {
 	return element.replace("%data%", replacement);
-}
+};
 
 function formatURL(element, replacement, url) {
 	return format(element, replacement).replace("#", url);
-}
+};
 
 var bio = {	
 	"name": "Aaron Tse",
@@ -26,7 +26,7 @@ var bio = {
 		"C++"
 	],
 	"biopic": "images/Profile.jpg"
-}
+};
 
 var education = {
 	"schools": [
@@ -34,7 +34,7 @@ var education = {
 			"name": "University of Alberta",
 			"location": "Edmonton", 
 			"degree": "Bachelor of Science",
-			"majors": "Honors in Computing Science",
+			"majors": ["Honors in Computing Science"],
 			"dates": "09/12 - 06/16",
 			"url": "http://ualberta.ca"
 		}
@@ -47,7 +47,7 @@ var education = {
 			"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 		}
 	]
-}
+};
 
 var work = {
 	"jobs": [
@@ -66,7 +66,7 @@ var work = {
 			"description": "I worked as an intern, creating 3D models and manuals while learning about 3D printing."
 		}
 	]
-}
+};
 
 var projects = {
 	"projects": [
@@ -74,47 +74,48 @@ var projects = {
 			"title": "Fbook",
 			"dates": "01/16 - 04/16",
 			"description": "Built a distributed social networking system as part of CMPUT 404 - Web Applications and Architecture. We utilized Flask, Postgresql, Jquery, Bootstrap and Heroku.",
-			"images": ""
+			"images": []
 		},
 		{
 			"title": "Imaginary",
 			"dates": "01/16 - 04/16",
 			"description": "Built a 2d platforming game as part of INTD 450 - Computers and Games. We used Pygame.",
-			"images": ""
+			"images": []
 		},
 		{
 			"title": "Hanoi Robot",
 			"dates": "01/16 - 04/16",
 			"description": "Built a mobile robot that used visual servoing to solve the 'Tower of Hanoi' puzzle. Our robot used the Lego EV3 brick and was programmed in Java using the provided SDK.",
-			"images": ""
+			"images": []
 		},
 		{
 			"title": "RFIs for the Faculty of Medicine",
 			"dates": "09/15 - 12/15",
 			"description": "Built a RFI (Request for Information) data collection system for the Faculty of Medicine as part of CMPUT 401 - Software Processes. We utilized Laravel, MySQL, Jquery and Bootstrap.",
-			"images": ""
+			"images": []
 		}
 	]
-}
+};
 
 bio.display = function() {
-	$("#header").prepend(format(HTMLheaderRole, bio.role));
-	$("#header").prepend(format(HTMLheaderName, bio.name));
+	$("#header").prepend(
+		format(HTMLheaderRole, bio.role),
+		format(HTMLheaderName, bio.name),
+		format(HTMLwelcomeMsg, bio.welcomeMessage), 
+		format(HTMLbioPic, bio.biopic));
 
 	var contacts = bio.contacts;
-	$("#topContacts").append(format(HTMLmobile, contacts.mobile));
-	$("#topContacts").append(format(HTMLemail, contacts.email));
-	$("#topContacts").append(format(HTMLgithub, contacts.github));
-	$("#topContacts").append(format(HTMLlocation, contacts.location));
+	$("#topContacts").append(
+		format(HTMLmobile, contacts.mobile), 
+		format(HTMLemail, contacts.email), 
+		format(HTMLgithub, contacts.github),
+		format(HTMLlocation, contacts.location));
 
-	$("#footerContacts").append(format(HTMLmobile, contacts.mobile));
-	$("#footerContacts").append(format(HTMLemail, contacts.email));
-	$("#footerContacts").append(format(HTMLgithub, contacts.github));
-	$("#footerContacts").append(format(HTMLlocation, contacts.location));
-
-	$("#header").append(format(HTMLwelcomeMsg, bio.welcomeMessage));
-
-	$("#header").append(format(HTMLbioPic, bio.biopic));
+	$("#footerContacts").append(
+		format(HTMLmobile, contacts.mobile), 
+		format(HTMLemail, contacts.email), 
+		format(HTMLgithub, contacts.github), 
+		format(HTMLlocation, contacts.location));
 
 	var skills = bio.skills;
 	if (skills.length > 0) {
@@ -123,60 +124,69 @@ bio.display = function() {
 			$("#skills").append(format(HTMLskills, entry));
 		});
 	}
-}
+};
 
 education.display = function() {
 	var schools = education.schools;
 	if (schools.length > 0) {
 		schools.forEach(function(entry) {
 			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(formatURL(HTMLschoolName, entry.name, entry.url) + format(HTMLschoolDegree, entry.degree));
-			$(".education-entry:last").append(format(HTMLschoolDates, entry.dates));
-			$(".education-entry:last").append(format(HTMLschoolLocation, entry.location));
-			$(".education-entry:last").append(format(HTMLschoolMajor, entry.majors));
-		})
-	}
+			$(".education-entry:last").append(
+				formatURL(HTMLschoolName, entry.name, entry.url) + format(HTMLschoolDegree, entry.degree),
+				format(HTMLschoolDates, entry.dates),
+				format(HTMLschoolLocation, entry.location));
+
+			entry.majors.forEach(function(major) {
+				$(".education-entry:last").append(format(HTMLschoolMajor, major));
+			});
+		});
+	};
 
 	var onlineCourses = education.onlineCourses;
 	if (onlineCourses.length > 0) {
 		$("#education").append(HTMLonlineClasses);
 		onlineCourses.forEach(function(entry) {
 			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(formatURL(HTMLonlineTitle, entry.title, entry.url) + format(HTMLonlineSchool, entry.school));
-			$(".education-entry:last").append(format(HTMLonlineDates, entry.date));
-			$(".education-entry:last").append(format(HTMLonlineURL, entry.url));
-		})
+			$(".education-entry:last").append(
+				formatURL(HTMLonlineTitle, entry.title, entry.url) + format(HTMLonlineSchool, entry.school),
+				format(HTMLonlineDates, entry.date),
+				format(HTMLonlineURL, entry.url));
+		});
 	}
-}
+};
 
 work.display = function() {
 	var jobs = work.jobs;
 	if (jobs.length > 0) {
 		jobs.forEach(function(entry) {
 			$("#workExperience").append(HTMLworkStart);
-			$(".work-entry:last").append(format(HTMLworkEmployer, entry.employer) + format(HTMLworkTitle, entry.title));
-			$(".work-entry:last").append(format(HTMLworkDates, entry.dates));
-			$(".work-entry:last").append(format(HTMLworkLocation, entry.location));
-			$(".work-entry:last").append(format(HTMLworkDescription, entry.description));
-		})
+			$(".work-entry:last").append(
+				format(HTMLworkEmployer, entry.employer) + format(HTMLworkTitle, entry.title),
+				format(HTMLworkDates, entry.dates),
+				format(HTMLworkLocation, entry.location),
+				format(HTMLworkDescription, entry.description));
+		});
 	}
-}
+};
 
 projects.display = function() {
 	var projs = projects.projects;
 	if (projs.length > 0) {
 		projs.forEach(function(entry) {
 			$("#projects").append(HTMLprojectStart);
-			$(".project-entry:last").append(format(HTMLprojectTitle, entry.title));
-			$(".project-entry:last").append(format(HTMLprojectDates, entry.dates));
-			$(".project-entry:last").append(format(HTMLprojectDescription, entry.description));
-			if (entry.images != "") {
-				$(".project-entry:last").append(format(HTMLprojectImage, entry.images));
+			$(".project-entry:last").append(
+				format(HTMLprojectTitle, entry.title),
+				format(HTMLprojectDates, entry.dates),
+				format(HTMLprojectDescription, entry.description));
+			if (entry.images.length) {
+				entry.images.forEach(function(img) {
+					$(".project-entry:last").append(format(HTMLprojectImage, img));
+				})
 			}
 
 		})
 	}
-}
+};
 
 bio.display();
 education.display();
