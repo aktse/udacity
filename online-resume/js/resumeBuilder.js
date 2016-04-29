@@ -18,13 +18,14 @@ var bio = {
 	"welcomeMessage": "Hi there! Welcome to my resume :)",
 	"skills": [
 		"Agile", 
+		"Web Development",
+		"Linux",
 		"Python",
 		"RDBMS",
-		"Web Development",
 		"Java",
 		"C++"
 	],
-	"biopic": "images/fry.jpg"
+	"biopic": "images/Profile.jpg"
 }
 
 var education = {
@@ -106,6 +107,11 @@ bio.display = function() {
 	$("#topContacts").append(format(HTMLgithub, contacts.github));
 	$("#topContacts").append(format(HTMLlocation, contacts.location));
 
+	$("#footerContacts").append(format(HTMLmobile, contacts.mobile));
+	$("#footerContacts").append(format(HTMLemail, contacts.email));
+	$("#footerContacts").append(format(HTMLgithub, contacts.github));
+	$("#footerContacts").append(format(HTMLlocation, contacts.location));
+
 	$("#header").append(format(HTMLwelcomeMsg, bio.welcomeMessage));
 
 	$("#header").append(format(HTMLbioPic, bio.biopic));
@@ -165,7 +171,7 @@ projects.display = function() {
 			$(".project-entry:last").append(format(HTMLprojectDates, entry.dates));
 			$(".project-entry:last").append(format(HTMLprojectDescription, entry.description));
 			if (entry.images != "") {
-				$(".project-entry:last").append(format(HTMLprojectImage, entry.image));
+				$(".project-entry:last").append(format(HTMLprojectImage, entry.images));
 			}
 
 		})
