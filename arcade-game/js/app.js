@@ -16,6 +16,13 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    // Check Collision
+    if (this.y === player.y && Math.round(this.x) === player.x) {
+        player.reset();
+    }
+
+    // Update position
     if (this.heading === "R") {
         if (this.x < 4) {
             this.x += this.speed * dt;
@@ -73,7 +80,6 @@ Player.prototype.handleInput = function(input) {
             if (this.y < 5) {this.y++;}
             break;
     }
-    console.log("x: " + this.x + " y: " + this.y);
 };
 
 // Now instantiate your objects.
